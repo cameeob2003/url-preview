@@ -4,16 +4,30 @@
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `urlpreview` to your list of dependencies in `mix.exs`:
+Include the package in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:urlpreview, "~> 0.1.0"}]
+  [{:urlpreview, "~> 0.0.1"}]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/urlpreview](https://hexdocs.pm/urlpreview).
+Then use it in the following way:
 
+```elixir
+if Urlpreview.is_valid_url?("http://www.google.com") do
+  preview = Urlpreview.preview("http://www.google.com")
+end
+```
+
+The following properties are currently available
+
+```elixir
+preview.real_url
+preview.url
+preview.description
+preview.images <- list of site images
+preview.title
+```
+
+Docs can be found at [https://hexdocs.pm/urlpreview](https://hexdocs.pm/urlpreview).

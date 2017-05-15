@@ -32,7 +32,8 @@ defmodule Urlpreview.Mixfile do
   defp deps do
     [{:httpotion, "~> 3.0.2"}, # https://github.com/myfreeweb/httpotion
      {:floki, "~> 0.17.0"}, # https://github.com/philss/floki
-     {:fuzzyurl, "~> 0.9.0"}] # https://github.com/gamache/fuzzyurl.ex
+     {:fuzzyurl, "~> 0.9.0"},  # https://github.com/gamache/fuzzyurl.ex
+     {:ex_doc, ">= 0.0.0", only: :dev}]
   end
 
   defp package do
