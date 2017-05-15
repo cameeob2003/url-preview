@@ -1,6 +1,12 @@
 # Urlpreview
 
-**TODO: Add description**
+This package was added to allow a way to capture basic site meta data such as:
+- title
+- description
+- url
+- images
+
+The real purpose of this package is to allow url previews within various sites. Im new to this so if you have any suggestions submit a PR.
 
 ## Installation
 
