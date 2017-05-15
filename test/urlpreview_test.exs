@@ -12,8 +12,7 @@ defmodule UrlpreviewTest do
   test "returns expected result" do
     preview = Urlpreview.Parser.parse(%{
       body: File.read!("#{@fixture_dir}/general_page.html"),
-      request_url: "https://www.test-site.com",
-      real_url: "https://www.test-site.com"
+      url: "https://www.test-site.com"
     })
     assert preview == %{
       real_url: "https://www.test-site.com",
@@ -30,8 +29,7 @@ defmodule UrlpreviewTest do
   test "prioritizes og meta content above all other meta content" do
     preview = Urlpreview.Parser.parse(%{
       body: File.read!("#{@fixture_dir}/og_page.html"),
-      request_url: "https://www.test-site.com",
-      real_url: "https://www.test-site.com"
+      url: "https://www.test-site.com"
     })
     assert preview == %{
       real_url: "https://www.my-site-og-url.com/",

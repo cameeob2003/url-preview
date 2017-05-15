@@ -1,12 +1,12 @@
 defmodule Urlpreview.Parser do
 
-  def parse(%{body: body, request_url: url, real_url: real_url}) do
+  def parse(%{body: body, url: url}) do
     %{
         title: get_title(body),
         description: get_description(body),
         images: get_images(body) |> add_images_base_url(url),
         url: url,
-        real_url: get_real_url(body, real_url)
+        real_url: get_real_url(body, url)
       }
   end
 

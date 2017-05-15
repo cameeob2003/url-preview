@@ -4,8 +4,8 @@ defmodule Urlpreview do
   """
 
   def preview(url) do
-    Urlpreview.Request.get url
-    |> Urlpreview.Parser.parse
+    Urlpreview.Request.get(url)
+      |> Urlpreview.Parser.parse
   end
 
   @doc """

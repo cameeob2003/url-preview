@@ -21,9 +21,9 @@ defmodule Urlpreview.Request do
     case is_binary(request.body) do
       true ->
         value = Enum.join(for <<c::utf8 <- request.body>>, do: <<c::utf8>>)
-        %{ body: value, request_url: url, real_url: request.url }
+        %{ body: value, url: url }
       false ->
-        %{ body: request.body, request_url: url, real_url: request.url }
+        %{ body: request.body, url: url }
     end
   end
 
