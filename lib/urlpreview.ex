@@ -3,9 +3,28 @@ defmodule Urlpreview do
   Documentation for Urlpreview.
   """
 
+  @doc """
+  Returns relevant meta data about the given url
+  In the event the url is able to be proccessed a RuntimeError error is raised
+
+  ## Examples
+
+      iex> Urlpreview.preview("http://example.com")
+      %{description: nil, images: [], real_url: "http://example.com", title: "Example Domain", url: "http://example.com"}
+
+      iex> Urlpreview.preview("http://myfakedomainthatisntgoingtoreturnsuccess.com")
+      ** (RuntimeError) An unknown error has occurred.
+
+  """
   def preview(url) do
-    Urlpreview.Request.get(url)
-      |> Urlpreview.Parser.parse
+    case Urlpreview.Request.get(url) do
+      {:ok, response} ->
+        case Urlpreview.Parser.parse(response) do
+          {:ok, metadata} -> metadata
+          {:error, message} -> raise message
+        end
+      {:error, message} -> raise message
+    end
   end
 
   @doc """

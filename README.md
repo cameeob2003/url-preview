@@ -14,7 +14,7 @@ Include the package in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:urlpreview, "~> 0.0.2"}]
+  [{:urlpreview, "~> 0.0.3"}]
 end
 ```
 

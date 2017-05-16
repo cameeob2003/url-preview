@@ -3,7 +3,7 @@ defmodule Urlpreview.Mixfile do
 
   def project do
     [app: :urlpreview,
-     version: "0.0.2",
+     version: "0.0.3",
      description: "Fetches meta data from websites and returns information useful for things such as URL previews.",
      package: package(),
      elixir: "~> 1.4",

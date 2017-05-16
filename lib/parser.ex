@@ -1,13 +1,31 @@
 defmodule Urlpreview.Parser do
 
+  @doc """
+  Parses the given html body and returns meta data relevant to the html
+
+  ## Examples
+
+      iex> Urlpreview.Parser.parse(%{ body: File.read!("fixtures/general_page.html"), url: "https://www.test-site.com" })
+      {:ok, %{
+        real_url: "https://www.test-site.com",
+        url: "https://www.test-site.com",
+        description: "This is the meta description",
+        images: [
+          "https://www.test-site.com/itemprop_image.png",
+          "https://www.test-site.com/itemprop_image2.png"
+        ],
+        title: "My Test Site"
+      }}
+
+  """
   def parse(%{body: body, url: url}) do
-    %{
+    {:ok, %{
         title: get_title(body),
         description: get_description(body),
         images: get_images(body) |> add_images_base_url(url),
         url: url,
         real_url: get_real_url(body, url)
-      }
+      }}
   end
 
   defp get_real_url(html, url) do
